@@ -359,9 +359,12 @@ class _MaterialControlsState extends State<MaterialControls> {
   }
 
   void _updateState() {
+    bool isFinished = controller.value.position >= controller.value.duration;
+
     setState(() {
       _latestValue = controller.value;
-    });
+      _hideStuff = isFinished ? false : _hideStuff;
+    });  
   }
 
   Widget _buildProgressBar() {
